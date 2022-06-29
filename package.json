@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "description": "A shim for use with the C library for the WaveShare 2.13inch Touch e-Paper HAT",
   "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "bindings": "~1.2.1",
+    "node-addon-api": "^1.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jacob Peters",
-  "license": "MIT"
+  "license": "MIT",
+  "gypfile": true
 }
