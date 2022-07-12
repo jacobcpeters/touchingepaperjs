@@ -59,7 +59,7 @@ Napi::Value DrawImage(const Napi::CallbackInfo& info) {
 
   //Get the ArrayBuffer and then check it for size
   Napi::ArrayBuffer buf = info[0].As<Napi::ArrayBuffer>();
-  if (EPD::Display::getInstance().writeBuffer(buf.Data(), buf.ByteLength())) {
+  if (!EPD::Display::getInstance().writeBuffer(buf.Data(), buf.ByteLength())) {
     Napi::RangeError::New(env, "Arraybuffer not large enough to fill the image buffer")
         .ThrowAsJavaScriptException();
     return env.Null();
