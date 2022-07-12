@@ -66,6 +66,7 @@ bool SPI::write(const uint8_t* tx, size_t len) {
 
   xfer[0].delay_usecs = delay;
   xfer[0].tx_buf = reinterpret_cast<uint64_t>(tx);
+  xfer[0].len = len;
 
   if(!(mode == SPIMode::Loop) && mode == (SPIMode::TxQuad | SPIMode::TxDual)) {
     xfer[0].rx_buf = 0;
@@ -84,6 +85,7 @@ bool SPI::read(const uint8_t* rx, size_t len) {
 
   xfer[0].delay_usecs = delay;
   xfer[0].rx_buf = reinterpret_cast<uint64_t>(rx);
+  xfer[0].len = len;
 
   if(!(mode == SPIMode::Loop) && mode == (SPIMode::RxQuad | SPIMode::RxDual)) {
     xfer[0].tx_buf = 0;
@@ -103,6 +105,7 @@ bool SPI::transfer(const uint8_t* tx, const uint8_t* rx, size_t len) {
   xfer[0].delay_usecs = delay;
   xfer[0].tx_buf = reinterpret_cast<uint64_t>(tx);
   xfer[0].rx_buf = reinterpret_cast<uint64_t>(rx);
+  xfer[0].len = len;
 
   if(!(mode == SPIMode::Loop)) {
     if(mode == (SPIMode::TxQuad | SPIMode::TxDual)) {
