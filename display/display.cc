@@ -18,7 +18,7 @@ void Display::init(DisplayConfig cfg) {
 }
 
 bool Display::writeBuffer(void* buf, size_t size) {
-  if(size < sizeof(displayBuffer.get())) {
+  if(size < (llio->getWidth() * llio->getHeight())) {
     return false;
   }
 
