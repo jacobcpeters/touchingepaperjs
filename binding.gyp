@@ -3,24 +3,28 @@
     {
       "target_name": "shim",
       "cflags!": [ "-fno-exceptions" ],
-      "cflags_cc!": [ "-fno-exceptions" ],
+      "cflags_cc!": [
+        "-std=c++2a",
+        "-fno-exceptions"
+      ],
       "sources": [ "shim.cc",
-        "vendor/epaper/c/lib/EPD/EPD_2in13_V3.c",
-        "vendor/epaper/c/lib/Driver/GT1151.c",
-        "vendor/epaper/c/lib/Config/DEV_Config.c",
-        "vendor/epaper/c/lib/Config/RPI_sysfs_gpio.c",
-        "vendor/epaper/c/lib/Config/dev_hardware_SPI.c",
-        "vendor/epaper/c/lib/Config/dev_hardware_i2c.c",
+        "util/spidev.cc",
+        "display/display.cc",
+        "display/llio/llio.cc",
+        "display/llio/rpi2in13.cc",
+
       ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
-        "vendor/epaper/c/lib/EPD/",
-        "vendor/epaper/c/lib/Driver/",
-        "vendor/epaper/c/lib/Config/",
+        "util/",
+        "display/",
+        "display/llio/",
+        "vendor/bitmask/",
       ],
       "libraries": [
         "-lm",
-        "-lpthread"
+        "-lpthread",
+        "-lgpiod"
       ],
       'defines': [
         'NAPI_DISABLE_CPP_EXCEPTIONS',
