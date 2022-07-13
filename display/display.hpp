@@ -16,9 +16,7 @@ namespace EPD {
 
         return instance;
       }
-    private:
-      Display() {}
-    public:
+
       Display(Display const&)         = delete;
       void operator=(Display const&)  = delete;
 
@@ -35,6 +33,8 @@ namespace EPD {
       void draw();
 
     private:
+      Display() {}
+
       Ref<uint8_t[]> displayBuffer;
       // llif = low level interface
       Scope<DisplayDevice> llif;
