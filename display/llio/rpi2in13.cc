@@ -98,6 +98,8 @@ void RPi2in13::init() {
   sendCommand(Command::SetDummyLinePeriod, dummyLineFromHz(50));
   sendCommand(Command::SetGateLineWidth, gateLineFromHz(50));
 
+  initRamSettings();
+
   switch (cfg.mode)
     {
     case DisplayMode::Partial:
