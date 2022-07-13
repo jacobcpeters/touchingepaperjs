@@ -9,10 +9,10 @@
 
 namespace EPD {
 
-  class LLIO {
+  class DisplayDevice {
   public:
-    LLIO() {}
-    virtual ~LLIO() {}
+    DisplayDevice() {}
+    virtual ~DisplayDevice() {}
 
     virtual void init() = 0;
     //virtual void mirror(bool, bool) = 0;
@@ -28,7 +28,7 @@ namespace EPD {
     virtual void setDisplayMode(DisplayMode) = 0;
     virtual void drawBuffer(Ref<uint8_t[]> buf, bool fullRefresh = false) = 0;
 
-    static Scope<LLIO> Create(DisplayConfig& cfg);
+    static Scope<DisplayDevice> Create(DisplayConfig& cfg);
 
 
   protected:

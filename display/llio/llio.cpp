@@ -7,7 +7,7 @@
 
 namespace EPD {
 
-Scope<LLIO> LLIO::Create(DisplayConfig& cfg) {
+Scope<DisplayDevice> DisplayDevice::Create(DisplayConfig& cfg) {
   if(strcmp(cfg.type.get(), "rpi_2in13") == 0) {
     return CreatScope<RPi2in13>(cfg);
   } else {

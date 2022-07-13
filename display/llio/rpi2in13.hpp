@@ -11,7 +11,7 @@
 
 namespace EPD {
 
-class RPi2in13: public LLIO
+class RPi2in13: public DisplayDevice
 {
 public:
 
