@@ -3,8 +3,8 @@
 
 #include <cstdint>
 
-#include "config.hpp"
-#include "llio/llio.hpp"
+#include "display_config.hpp"
+#include "display_device.hpp"
 
 namespace EPD {
 

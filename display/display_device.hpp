@@ -1,11 +1,11 @@
-#ifndef LLIO_HPP
-#define LLIO_HPP
+#ifndef DISPLAY_DEVICE_HPP
+#define DISPLAY_DEVICE_HPP
 
 #include <cstdint>
 
 #include <util.hpp>
 
-#include "../config.hpp"
+#include "display_config.hpp"
 
 namespace EPD {
 

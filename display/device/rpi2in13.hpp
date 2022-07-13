@@ -6,7 +6,7 @@
 
 #include <spidev.hpp>
 
-#include "llio.hpp"
+#include "../display_device.hpp"
 
 
 namespace EPD {

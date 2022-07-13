@@ -1,5 +1,5 @@
-#ifndef ENUMS_HPP
-#define ENUMS_HPP
+#ifndef DISPLAY_CONFIG_HPP
+#define DISPLAY_CONFIG_HPP
 
 #include <type_traits>
 #include <cstring>
@@ -48,4 +48,4 @@ template<>
     static const bool enable=true;
   };
 
-#endif /* ENUMS_HPP */
+#endif /* DISPLAY_CONFIG_HPP */
