@@ -7,11 +7,11 @@
         "-std=c++2a",
         "-fno-exceptions"
       ],
-      "sources": [ "shim.cc",
-        "util/spidev.cc",
-        "display/display.cc",
-        "display/llio/llio.cc",
-        "display/llio/rpi2in13.cc",
+      "sources": [ "shim.cpp",
+        "util/spidev.cpp",
+        "display/display.cpp",
+        "display/llio/llio.cpp",
+        "display/llio/rpi2in13.cpp",
 
       ],
       "include_dirs": [

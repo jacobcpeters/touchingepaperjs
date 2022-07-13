@@ -29,7 +29,7 @@ Napi::Value InitDisplay(const Napi::CallbackInfo& info) {
   // JS String to EPD::DisplayMode
   EPD::DisplayMode mode = EPD::DisplayMode::Full;
   if(std::string(info[3].As<Napi::String>()) == "Partial")
-    mode = EPD::DisplayMode::Full;
+    mode = EPD::DisplayMode::Partial;
 
   EPD::DisplayConfig cfg(
     std::string(info[0].As<Napi::String>()).c_str(),
