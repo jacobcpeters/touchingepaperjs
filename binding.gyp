@@ -10,15 +10,15 @@
       "sources": [ "shim.cpp",
         "util/spidev.cpp",
         "display/display.cpp",
-        "display/llio/llio.cpp",
-        "display/llio/rpi2in13.cpp",
+        "display/display_device.cpp",
+        "display/device/rpi2in13.cpp",
 
       ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
         "util/",
         "display/",
-        "display/llio/",
+        "display/device/",
         "vendor/bitmask/",
       ],
       "libraries": [
