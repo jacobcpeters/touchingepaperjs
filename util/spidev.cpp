@@ -1,13 +1,9 @@
-#include <stdio.h>
-#include <stdint.h>
 #include <fcntl.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <errno.h>
 #include <sys/ioctl.h>
 
 #include <linux/spi/spidev.h>
 
+#include <cstdint>
 #include <stdexcept>
 #include <cstring>
 
@@ -61,8 +57,8 @@ bool SPI::setDelay(uint16_t delay) {
 }
 
 bool SPI::write(const uint8_t* tx, size_t len) {
-  struct spi_ioc_transfer xfer[1];
-  memset(xfer, 0, sizeof(xfer));
+  spi_ioc_transfer xfer[1];
+  memset(xfer, 0, sizeof(spi_ioc_transfer));
 
   xfer[0].delay_usecs = delay;
   xfer[0].tx_buf = reinterpret_cast<uint64_t>(tx);
@@ -80,8 +76,8 @@ bool SPI::write(const uint8_t* tx, size_t len) {
 }
 
 bool SPI::read(const uint8_t* rx, size_t len) {
-  struct spi_ioc_transfer xfer[1];
-  memset(xfer, 0, sizeof(xfer));
+  spi_ioc_transfer xfer[1];
+  memset(xfer, 0, sizeof(spi_ioc_transfer));
 
   xfer[0].delay_usecs = delay;
   xfer[0].rx_buf = reinterpret_cast<uint64_t>(rx);
@@ -99,8 +95,8 @@ bool SPI::read(const uint8_t* rx, size_t len) {
 }
 
 bool SPI::transfer(const uint8_t* tx, const uint8_t* rx, size_t len) {
-  struct spi_ioc_transfer xfer[1];
-  memset(xfer, 0, sizeof(xfer));
+  spi_ioc_transfer xfer[1];
+  memset(xfer, 0, sizeof(spi_ioc_transfer));
 
   xfer[0].delay_usecs = delay;
   xfer[0].tx_buf = reinterpret_cast<uint64_t>(tx);
