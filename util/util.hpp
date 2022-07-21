@@ -3,7 +3,7 @@
 
 #include <memory>
 
-namespace EPD
+namespace Util
 {
   template <class T>
   using Scope = std::unique_ptr<T>;
@@ -21,7 +21,7 @@ namespace EPD
     return std::make_shared<T>(std::forward<Args>(args)...);
   }
 
-} // namespace EPD
+} // namespace Util
 
 
 #endif /* UTIL_HPP */

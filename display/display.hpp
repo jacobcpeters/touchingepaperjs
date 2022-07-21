@@ -3,6 +3,7 @@
 
 #include <cstdint>
 
+#include <util.hpp>
 #include "display_config.hpp"
 #include "display_device.hpp"
 

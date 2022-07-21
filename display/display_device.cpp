@@ -5,6 +5,8 @@
 
 #include "rpi2in13.hpp"
 
+using namespace Util;
+
 namespace EPD {
 
 Scope<DisplayDevice> DisplayDevice::Create(DisplayConfig& cfg) {

@@ -1,6 +1,8 @@
 #include "display.hpp"
 #include <cstring>
 
+using namespace Util;
+
 namespace EPD {
 
 void Display::init(DisplayConfig cfg) {
