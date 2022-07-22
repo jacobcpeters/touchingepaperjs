@@ -2,6 +2,7 @@
 #define TOUCH_HPP
 
 #include <cstdint>
+#include <vector>
 
 #include <util.hpp>
 #include "touch_device.hpp"
@@ -13,6 +14,7 @@ struct TouchData
   uint16_t x;
   uint16_t y;
   uint16_t size;
+  uint16_t id;
 };
 
 class Touch
@@ -30,14 +32,13 @@ public:
 
   void init(const char* device_type);
 
-  // returns a pointer to the touchPoints array
-  TouchData* getTouchData();
-  int activeTouches();
+  void tick();
+
+  TouchData* getTouchEvents();
 private:
   Touch() {}
-  uint8_t maxTouchCount;
 
-  Scope<TouchData[]> touchPoints;
+  std::vector<TouchData> touchPoints;
   // llif = low level interface
   Scope<TouchDevice> llif;
 };
