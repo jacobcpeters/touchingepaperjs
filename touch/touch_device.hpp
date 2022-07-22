@@ -5,6 +5,8 @@
 
 #include <util.hpp>
 
+#include "touch.hpp"
+
 namespace Touch {
 
 class TouchDevice {
@@ -19,7 +21,7 @@ public:
 
   virtual void getTouchData(TouchData* data);
 
-  virtual int getMaxTouches() = 0;
+  virtual int maxTouches() = 0;
   virtual int getActiveTouches() = 0;
 
   virtual void reset() = 0;
