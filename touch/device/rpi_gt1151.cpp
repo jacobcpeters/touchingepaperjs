@@ -16,6 +16,7 @@ struct StatusBuffer {
   uint8_t haveKey : 1;
   uint8_t touchPoints : 3;
 };
+typedef struct StatusBuffer StatusBuffer;
 
 struct TouchBuffer {
   uint8_t id;
@@ -37,6 +38,7 @@ struct TouchBuffer {
 
   uint8_t _pad;
 };
+typedef struct TouchBuffer TouchBuffer;
 
 
 RpiGt1151::RpiGt1151(): i2c("/dev/i2c-1") {

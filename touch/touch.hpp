@@ -16,6 +16,7 @@ struct TouchData
   uint16_t size;
   uint16_t id;
 };
+typedef struct TouchData TouchData;
 
 class Touch
 {
