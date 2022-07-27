@@ -22,17 +22,17 @@ I2C::~I2C() {
   close(i2c);
 }
 
-void I2C::read(uint16_t addr, uint8_t* reg, uint8_t* buf, size_t* len) {
+void I2C::read(uint16_t addr, uint8_t* reg, size_t regLen, uint8_t* buf, size_t bufLen) {
   i2c_msg message[2] = {
       {
         .addr = addr,
-        .len = len[0],
+        .len = regLen,
         .buf = reg,
       },
       {
         .addr = addr,
         .flags = I2C_M_RD,
-        .len = len[1],
+        .len = bufLen,
         .buf = buf,
       }
   };

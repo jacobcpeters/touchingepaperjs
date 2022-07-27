@@ -11,7 +11,7 @@ public:
   I2C(const char* devicePath);
   ~I2C();
 
-  void read(uint16_t addr, uint8_t* reg, uint8_t* buf, size_t* len);
+  void read(uint16_t addr, uint8_t* reg, size_t regLen, uint8_t* buf, size_t bufLen);
   void write(uint16_t addr, uint8_t* buf, size_t len);
 
 private:
