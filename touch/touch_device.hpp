@@ -19,7 +19,7 @@ public:
   virtual int getWidth() = 0;
   virtual int getHeight() = 0;
 
-  virtual void getTouchData(TouchData* data);
+  virtual void getTouchData(TouchData* data, size_t len);
 
   virtual int maxTouches() = 0;
   virtual int getActiveTouches() = 0;

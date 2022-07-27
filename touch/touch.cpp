@@ -29,6 +29,7 @@ void Touch::tick() {
   }
 
   Scope<TouchData[]> touchBuffer = CreatScope<TouchData[]>( new TouchData[activeTouches]);
+  llif->getTouchData(touchBuffer.get(), activeTouches);
 
   for(auto touch = touchPoints.begin(); touch != touchPoints.end(); touch++) {
     int index = containsId(touch->id, touchBuffer.get(), activeTouches);
