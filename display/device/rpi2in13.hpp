@@ -28,7 +28,7 @@ public:
   void sleep();
 
   void setDisplayMode(DisplayMode);
-  void drawBuffer(Ref<uint8_t[]> buf, bool fullRefresh = false);
+  void drawBuffer(Util::Ref<uint8_t[]> buf, bool fullRefresh = false);
 private:
 
   enum class Command: uint8_t {
