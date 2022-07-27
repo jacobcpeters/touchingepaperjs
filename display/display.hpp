@@ -36,9 +36,9 @@ namespace EPD {
     private:
       Display() {}
 
-      Ref<uint8_t[]> displayBuffer;
+      Util::Ref<uint8_t[]> displayBuffer;
       // llif = low level interface
-      Scope<DisplayDevice> llif;
+      Util::Scope<DisplayDevice> llif;
   };
 };
 

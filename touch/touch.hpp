@@ -40,7 +40,7 @@ private:
 
   std::vector<TouchData> touchPoints;
   // llif = low level interface
-  Scope<TouchDevice> llif;
+  Util::Scope<TouchDevice> llif;
 };
 
 }

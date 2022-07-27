@@ -22,7 +22,7 @@ namespace EPD {
 
   struct DisplayConfig
   {
-    Ref<const char[]> type;
+    Util::Ref<const char[]> type;
     uint32_t clearColor;
     DisplayMirror mirror;
     DisplayMode mode;

@@ -26,7 +26,7 @@ public:
 
   virtual void reset() = 0;
 
-  static Scope<TouchDevice> Create(const char* device_type);
+  static Util::Scope<TouchDevice> Create(const char* device_type);
 
 };
 

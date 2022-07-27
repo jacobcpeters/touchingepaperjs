@@ -26,9 +26,9 @@ namespace EPD {
 
 
     virtual void setDisplayMode(DisplayMode) = 0;
-    virtual void drawBuffer(Ref<uint8_t[]> buf, bool fullRefresh = false) = 0;
+    virtual void drawBuffer(Util::Ref<uint8_t[]> buf, bool fullRefresh = false) = 0;
 
-    static Scope<DisplayDevice> Create(DisplayConfig& cfg);
+    static Util::Scope<DisplayDevice> Create(DisplayConfig& cfg);
 
 
   protected:
