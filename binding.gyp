@@ -9,10 +9,11 @@
       ],
       "sources": [ "shim.cpp",
         "util/spidev.cpp",
+        "util/i2cdev.cpp",
         "display/display.cpp",
         "display/display_device.cpp",
-        "display/device/rpi2in13.cpp",
-
+        "touch/touch.cpp",
+        "touch/device/rpi_gt1151.cpp",
       ],
       "include_dirs": [
         "<!@(node -p \"require('node-addon-api').include\")",
