@@ -4,6 +4,8 @@
 
 namespace Touch {
 
+void endian_swap(uint16_t&val, uint8_t high, uint8_t low);
+
 static struct {
   uint8_t status[2] = {0x81, 0x4E};
   uint8_t touch[2] = {0x81, 0x4F};
