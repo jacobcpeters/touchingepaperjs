@@ -9,6 +9,8 @@
 
 namespace Touch {
 
+class TouchDevice;
+
 struct TouchData
 {
   uint16_t x;
