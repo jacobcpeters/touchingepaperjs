@@ -9,6 +9,8 @@
 
 namespace Touch {
 
+struct TouchData;
+
 class TouchDevice {
 public:
   TouchDevice() {}
@@ -19,7 +21,7 @@ public:
   virtual int getWidth() = 0;
   virtual int getHeight() = 0;
 
-  virtual void getTouchData(TouchData* data, size_t len);
+  virtual void getTouchData(TouchData* data, size_t len) = 0;
 
   virtual int maxTouches() = 0;
   virtual int getActiveTouches() = 0;
