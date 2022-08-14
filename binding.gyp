@@ -12,7 +12,9 @@
         "util/i2cdev.cpp",
         "display/display.cpp",
         "display/display_device.cpp",
+        "display/device/rpi2in13.cpp",
         "touch/touch.cpp",
+        "touch/touch_device.cpp",
         "touch/device/rpi_gt1151.cpp",
       ],
       "include_dirs": [
@@ -20,6 +22,8 @@
         "util/",
         "display/",
         "display/device/",
+        "touch/",
+        "touch/device/",
         "vendor/bitmask/",
       ],
       "libraries": [
