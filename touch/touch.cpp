@@ -2,13 +2,14 @@
 #include "touch.hpp"
 
 #include <limits>
+#include <iostream>
 
 using namespace Util;
 
 
 
 namespace Touch {
-int containsId(uint16_t id, TouchData data, size_t touches);
+TouchData* fetchTouchId(uint16_t id, TouchData* data, size_t touches);
 
 void Touch::init(const char* device_type) {
   llif = TouchDevice::Create(device_type);
@@ -25,19 +26,25 @@ TouchData* Touch::getTouchEvents() {
 void Touch::tick() {
   int activeTouches = llif->getActiveTouches();
   if(activeTouches < 1) {
+    // create TouchEndEvents if there are no more active touch points
+    for(auto touch = touchPoints.b bn.mnegin(); touch != touchPoints.end(); touch++) {
+      // stub: create TouchEndEvent
+      touchPoints.erase(touch);
+    }
     return;
   }
 
-  Scope<TouchData[]> touchBuffer = CreatScope<TouchData[]>( new TouchData[activeTouches]);
+  Scope<TouchData[]> touchBuffer = CreatScope<TouchData[]>(activeTouches);
   llif->getTouchData(touchBuffer.get(), activeTouches);
 
   for(auto touch = touchPoints.begin(); touch != touchPoints.end(); touch++) {
-    int index = containsId(touch->id, touchBuffer.get(), activeTouches);
-    if(index) {
+    TouchData* data = fetchTouchId(touch->id, touchBuffer.get(), activeTouches);
+    if(data != nullptr) {
+      //
       //stub: create TouchMoveEvent
-      *touch = touchBuffer[index];
-      //set id to a recognizable number to be sorted out;
-      touchBuffer[index].id = 0xDEAD;
+      *touch = *data;
+      // set id to a recognizable number to be sorted out;
+      data->id = 0xDEAD;
     } else {
       //stub: create TouchEndEvent
       touchPoints.erase(touch);
@@ -51,12 +58,12 @@ void Touch::tick() {
   }
 }
 
-int containsId(uint16_t id, TouchData* data, size_t touches) {
-  for(auto i = 0; i < touches; i++) {
+TouchData* fetchTouchId(uint16_t id, TouchData* data, size_t touches) {
+  for(size_t i = 0; i < touches; i++) {
     if(data[i].id == id)
-      return i;
+      return &data[i];
   }
-  return 0;
+  return nullptr;
 }
 
 }
