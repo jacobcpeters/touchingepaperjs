@@ -27,7 +27,7 @@ void Touch::tick() {
   int activeTouches = llif->getActiveTouches();
   if(activeTouches < 1) {
     // create TouchEndEvents if there are no more active touch points
-    for(auto touch = touchPoints.b bn.mnegin(); touch != touchPoints.end(); touch++) {
+    for(auto touch = touchPoints.begin(); touch != touchPoints.end(); touch++) {
       // stub: create TouchEndEvent
       touchPoints.erase(touch);
     }
