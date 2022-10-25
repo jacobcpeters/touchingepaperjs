@@ -19,16 +19,34 @@ void Touch::init(const char* device_type) {
   touchPoints.reserve( llif->maxTouches() );
 }
 
-TouchData* Touch::getTouchEvents() {
-  return touchPoints.data();
+TouchEvent* Touch::getTouchEvents() {
+  return touchEvents.data();
+}
+
+void Touch::clearTouchEvents() {
+  touchEvents.clear();
 }
 
 void Touch::tick() {
+  TouchEvent ev = {};
+
   int activeTouches = llif->getActiveTouches();
   if(activeTouches < 1) {
     // create TouchEndEvents if there are no more active touch points
     for(auto touch = touchPoints.begin(); touch != touchPoints.end(); touch++) {
-      // stub: create TouchEndEvent
+      ev = {
+        .type = EventType::TouchEnd,
+        .id = touch->id,
+
+        .x = touch->x,
+        .y = touch->y,
+        .size = touch->size,
+
+        .deltaX = 0,
+        .deltaY = 0
+      };
+      touchEvents.push_back(ev);
+
       touchPoints.erase(touch);
     }
     return;
@@ -40,19 +58,54 @@ void Touch::tick() {
   for(auto touch = touchPoints.begin(); touch != touchPoints.end(); touch++) {
     TouchData* data = fetchTouchId(touch->id, touchBuffer.get(), activeTouches);
     if(data != nullptr) {
-      //
-      //stub: create TouchMoveEvent
+      ev = {
+        .type = EventType::TouchMove,
+        .id = touch->id,
+
+        .x = touch->x,
+        .y = touch->y,
+        .size = touch->size,
+
+        .deltaX = touch->x - data->x,
+        .deltaY = touch->y - data->y
+      };
+      touchEvents.push_back(ev);
+
       *touch = *data;
       // set id to a recognizable number to be sorted out;
       data->id = 0xDEAD;
     } else {
-      //stub: create TouchEndEvent
+      ev = {
+        .type = EventType::TouchEnd,
+        .id = touch->id,
+
+        .x = touch->x,
+        .y = touch->y,
+        .size = touch->size,
+
+        .deltaX = 0,
+        .deltaY = 0
+      };
+      touchEvents.push_back(ev);
+
       touchPoints.erase(touch);
     }
   }
   for(auto i = 0; i < activeTouches; i++) {
     if(touchBuffer[i].id != 0xDEAD) {
-      //stub: create TouchStartEvent
+      ev = {
+        .type = EventType::TouchStart,
+        .id = touchBuffer[i].id,
+
+        .x = touchBuffer[i].x,
+        .y = touchBuffer[i].y,
+        .size = touchBuffer[i].size,
+
+        .deltaX = 0,
+        .deltaY = 0
+      };
+      touchEvents.push_back(ev);
+
       touchPoints.push_back(touchBuffer[i]);
     }
   }

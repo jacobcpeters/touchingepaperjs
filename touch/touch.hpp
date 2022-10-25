@@ -6,6 +6,7 @@
 
 #include <util.hpp>
 #include "touch_device.hpp"
+#include "touch_structs.hpp"
 
 namespace Touch {
 
@@ -37,11 +38,13 @@ public:
 
   void tick();
 
-  TouchData* getTouchEvents();
+  TouchEvent* getTouchEvents();
+  void clearTouchEvents();
 private:
   Touch() {}
 
   std::vector<TouchData> touchPoints;
+  std::vector<TouchEvent> touchEvents;
   // llif = low level interface
   Util::Scope<TouchDevice> llif;
 };

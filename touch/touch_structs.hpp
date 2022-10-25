@@ -15,14 +15,14 @@ struct TouchEvent
 {
   EventType type;
 
-  uint8_t id;
+  uint16_t id;
 
   uint16_t x;
   uint16_t y;
   uint16_t size;
 
-  uint16_t deltaX;
-  uint16_t deltaY;
+  int32_t deltaX;
+  int32_t deltaY;
 };
 
 
