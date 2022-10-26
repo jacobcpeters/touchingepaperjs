@@ -1,3 +1,0 @@
-[submodule "vendor/epaper"]
-	path = vendor/epaper
-	url = https://github.com/waveshare/Touch_e-Paper_HAT.git
