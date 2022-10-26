@@ -98,10 +98,20 @@ int RpiGt1151::maxTouches() {
 
 int RpiGt1151::getActiveTouches() {
   StatusBuffer status;
-  i2c.read(0x14, reg.status, 2, reinterpret_cast<uint8_t*>(&status), 1);
+  uint8_t buf;
+  i2c.read(0x14, reg.status, 2, &buf, 1);
 
-  if(!status.status || !status.haveKey)
+  status.status = (buf & 128) > 0;
+  status.touchPoints = buf & 15;
+
+  if(!status.status)
     return 0;
+
+  if(status.touchPoints < 1) {
+    //clear status register
+    uint8_t clear[3] = {reg.status[0], reg.status[1], 0};
+    i2c.write(0x14, clear, 3);
+  }
 
   return status.touchPoints;
 }
