@@ -38,7 +38,7 @@ public:
 
   void tick();
 
-  TouchEvent* getTouchEvents();
+  std::vector<TouchEvent>* getTouchEvents();
   void clearTouchEvents();
 private:
   Touch() {}

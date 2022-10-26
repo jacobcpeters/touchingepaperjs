@@ -19,8 +19,8 @@ void Touch::init(const char* device_type) {
   touchPoints.reserve( llif->maxTouches() );
 }
 
-TouchEvent* Touch::getTouchEvents() {
-  return touchEvents.data();
+std::vector<TouchEvent>* Touch::getTouchEvents() {
+  return &touchEvents;
 }
 
 void Touch::clearTouchEvents() {
@@ -33,7 +33,7 @@ void Touch::tick() {
   int activeTouches = llif->getActiveTouches();
   if(activeTouches < 1) {
     // create TouchEndEvents if there are no more active touch points
-    for(auto touch = touchPoints.begin(); touch != touchPoints.end(); touch++) {
+    for(auto touch = touchPoints.begin(); touch != touchPoints.end();) {
       ev = {
         .type = EventType::TouchEnd,
         .id = touch->id,
@@ -55,7 +55,7 @@ void Touch::tick() {
   Scope<TouchData[]> touchBuffer = CreatScope<TouchData[]>(activeTouches);
   llif->getTouchData(touchBuffer.get(), activeTouches);
 
-  for(auto touch = touchPoints.begin(); touch != touchPoints.end(); touch++) {
+  for(auto touch = touchPoints.begin(); touch != touchPoints.end();) {
     TouchData* data = fetchTouchId(touch->id, touchBuffer.get(), activeTouches);
     if(data != nullptr) {
       ev = {
@@ -74,6 +74,7 @@ void Touch::tick() {
       *touch = *data;
       // set id to a recognizable number to be sorted out;
       data->id = 0xDEAD;
+      touch++;
     } else {
       ev = {
         .type = EventType::TouchEnd,
