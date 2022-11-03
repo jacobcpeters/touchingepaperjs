@@ -1,5 +1,11 @@
 import bindings from 'bindings'
-const display = bindings('shim');
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const display = bindings({
+  bindings: 'shim',
+  module_root: __dirname
+});
 
 export default EPaperDisplay;
 const {
