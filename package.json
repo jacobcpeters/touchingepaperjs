@@ -2,7 +2,7 @@
   "name": "waveshare-touch-epaper",
   "version": "0.1.0",
   "description": "A shim for use with the C library for the WaveShare 2.13inch Touch e-Paper HAT",
-  "main": "index.js",
+  "main": "index.mjs",
   "private": true,
   "dependencies": {
     "bindings": "~1.2.1",
