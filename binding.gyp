@@ -37,7 +37,7 @@
             'NAPI_DISABLE_CPP_EXCEPTIONS',
           ],
         }],
-        ['OS=="linux"', {"sources": ["shim_mock.cpp"]}]
+        ['OS!="linux"', {"sources": ["shim_mock.cpp"]}]
       ],
     }
   ]
